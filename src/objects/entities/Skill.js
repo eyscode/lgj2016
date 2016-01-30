@@ -1,6 +1,7 @@
 export default class Skill {
-    constructor(textureKey, matrix, type, obj) {
-        this.textureKey = textureKey;
+    constructor(name, frame, matrix, type, obj) {
+        this.name = name;
+        this.frame = frame;
         this.matrix = matrix;
         this.active = false;
         this.type = type;
@@ -12,15 +13,20 @@ export default class Skill {
     }
 
     addToGame(game, x, y) {
-        this.sprite = game.add.sprite(x, y, this.textureKey);
+        this.sprite = game.add.sprite(x, y, 'skills');
+        this.sprite.anchor.x = 0.5;
+        this.sprite.anchor.y = 0.5;
+        this.sprite.frame = this.frame;
+        this.active = true;
     }
 
     removeFromGame() {
-        this.sprite.kill();
+        this.active = false;
+        this.sprite.destroy();
     }
 
     performAction(enemy) {
-        console.log(`Skill used ${this.textureKey}`);
+        console.log(`Skill used ${this.name}`);
         if (this.type == 'A') {
             enemy.god.life -= this.obj.attackValue;
             console.log(`Value attack ${this.obj.attackValue}`);
