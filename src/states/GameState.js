@@ -30,20 +30,20 @@ class GameState extends Phaser.State {
         attack1User1Key.onDown.add(this.player1.attack1, this);
         var attack2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
         attack2User1Key.onDown.add(this.player1.attack2, this);
-        //var attack3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.C);
-        //attack3User1Key.onDown.add(this.attack3User1, this);
-        //var attack4User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.V);
-        //attack4User1Key.onDown.add(this.attack4User1, this);
+        var attack3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.C);
+        attack3User1Key.onDown.add(this.player1.attack3, this);
+        var attack4User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.V);
+        attack4User1Key.onDown.add(this.player1.attack4, this);
 
         //Key detection user 2
         var attack1User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUM_LOCK);
         attack1User2Key.onDown.add(this.player2.attack1, this);
         var attack2User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_DIVIDE);
         attack2User2Key.onDown.add(this.player2.attack2, this);
-        //var attack3User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_MULTIPLY);
-        //attack3User2Key.onDown.add(this.attack3User2, this);
-        //var attack4User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_SUBTRACT);
-        //attack4User2Key.onDown.add(this.attack4User2, this);
+        var attack3User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_MULTIPLY);
+        attack3User2Key.onDown.add(this.player2.attack3, this);
+        var attack4User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_SUBTRACT);
+        attack4User2Key.onDown.add(this.player2.attack4, this);
     }
 
 

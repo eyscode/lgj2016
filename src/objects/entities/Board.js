@@ -23,7 +23,7 @@ class Board {
             var sprite = this.game.add.sprite( this.x + this.widthCel*col , this.y + this.heightCel*row , 'simbols');
             sprite.frame = resource-1;
             this.sprites[col][row] = sprite;
-            logmatrix();
+            this.logmatrix();
             return true;
         }else{
             return false;
@@ -40,7 +40,7 @@ class Board {
             var sprite = this.sprites[col][row];
             sprite.kill();
             this.sprites[col][row] = null;
-            logmatrix();
+            this.logmatrix();
             return true;
         }else{
             return false;
@@ -58,7 +58,7 @@ class Board {
                 }
             }
         }
-        logmatrix();
+        this.logmatrix();
         return true;
 
     }
@@ -86,7 +86,7 @@ class Board {
             sprite.kill();
             this.sprites[position[0]][position[1]] = null;
         }
-        logmatrix();
+        this.logmatrix();
     }
 
 
