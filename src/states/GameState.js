@@ -1,5 +1,7 @@
 import RainbowText from 'objects/RainbowText';
-import God from 'objects/sprites/God';
+import God1 from 'objects/sprites/gods/God1';
+import God2 from 'objects/sprites/gods/God2';
+import God3 from 'objects/sprites/gods/God3';
 
 class GameState extends Phaser.State {
 
@@ -8,9 +10,7 @@ class GameState extends Phaser.State {
     }
 
     preload() {
-        this.game.load.atlasXML('octopus', 'assets/sprites/octopus.png', 'assets/sprites/octopus.xml');
-        this.game.load.atlasXML('octopus_a1', 'assets/sprites/octopus_a1.png', 'assets/sprites/octopus.xml');
-        this.game.load.atlasXML('octopus_a2', 'assets/sprites/octopus_a2.png', 'assets/sprites/octopus.xml');
+        this.game.load.atlasXML('seacreatures', 'assets/sprites/seacreatures.png', 'assets/sprites/seacreatures.xml');
     }
 
     create() {
@@ -18,8 +18,8 @@ class GameState extends Phaser.State {
         let center = {x: this.game.world.centerX, y: this.game.world.centerY}
         //let text = new RainbowText(this.game, center.x, center.y, "- phaser -\nwith a sprinkle of\nES6 dust!");
         //text.anchor.set(0.5);
-        this.god1 = new God(this.game, 100, 100);
-        this.god2 = new God(this.game, 550, 100);
+        this.god1 = new God1(this.game, 100, 50);
+        this.god2 = new God2(this.game, 550, 50);
 
         //Key detection user 1
         var attack1User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
@@ -43,40 +43,40 @@ class GameState extends Phaser.State {
     }
 
     attack1User1() {
-        console.log("ATAQUE 1 USER 1");
-        this.god1.attack1();
+        this.god1.attack1(this.god2);
     }
 
     attack2User1() {
-        console.log("ATAQUE 2 USER 1");
         this.god1.attack2();
     }
 
     attack3User1() {
-        console.log("ATAQUE 3 USER 1");
+        this.god1.attack3();
     }
 
     attack4User1() {
-        console.log("ATAQUE 4 USER 1");
+        this.god1.attack4();
     }
 
     attack1User2() {
-        console.log("ATAQUE 1 USER 2");
+        this.god2.attack1(this.god1);
     }
 
     attack2User2() {
-        console.log("ATAQUE 2 USER 2");
+        this.god2.attack2();
     }
 
     attack3User2() {
-        console.log("ATAQUE 3 USER 2");
+        this.god2.attack3();
     }
 
     attack4User2() {
-        console.log("ATAQUE 4 USER 2");
+        this.god2.attack4();
     }
 
     update() {
+        this.god1.update();
+        this.god2.update();
     }
 }
 
