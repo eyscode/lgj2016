@@ -3,6 +3,10 @@ import God from 'objects/sprites/God';
 
 class GameState extends Phaser.State {
 
+    init(param1 , param2) {
+        console.log("GAME STATE", param1, param2);
+    }
+
     preload() {
         this.game.load.atlasXML('octopus', 'assets/sprites/octopus.png', 'assets/sprites/octopus.xml');
         this.game.load.atlasXML('octopus_a1', 'assets/sprites/octopus_a1.png', 'assets/sprites/octopus.xml');
