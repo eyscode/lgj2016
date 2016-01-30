@@ -23,24 +23,24 @@ class God extends Phaser.Sprite {
         this.animations.play('normal');
     }
 
-    attack1(enemy, table) {
+    attack1(enemy) {
         if (this.lastEvent) {
             this.game.time.events.remove(this.lastEvent);
             this.lastEvent = null;
         }
         this.animations.play('attack1');
         this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * 2, this.restore, this);
-        this.skills.a1.performAction(enemy, table);
+        this.skills.a1.performAction(enemy);
     }
 
-    attack2(enemy, table) {
+    attack2(enemy) {
         if (this.lastEvent) {
             this.game.time.events.remove(this.lastEvent);
             this.lastEvent = null;
         }
         this.animations.play('attack2');
         this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * 2, this.restore, this);
-        this.skills.a2.performAction(enemy, table);
+        this.skills.a2.performAction(enemy);
     }
 
     //attack3(table) {

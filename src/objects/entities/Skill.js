@@ -9,7 +9,6 @@ export default class Skill {
 
     setOwner(owner) {
         this.owner = owner;
-        console.log(this.owner);
     }
 
     addToGame(game, x, y) {

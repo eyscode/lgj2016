@@ -54,7 +54,7 @@ class GameState extends Phaser.State {
     }
 
     attack1User1() {
-        this.god1.attack1(this.god2);
+        this.god1.attack1(this.god2); // TODO: change god reference to user reference
     }
 
     attack2User1() {
