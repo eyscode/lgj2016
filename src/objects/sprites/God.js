@@ -1,5 +1,5 @@
 class God extends Phaser.Sprite {
-    constructor(game, x, y, textureKey0, textureKey1, textureKey2, textureKey3, textureKey4, life) {
+    constructor(game, direction, x, y, textureKey0, textureKey1, textureKey2, textureKey3, textureKey4, life) {
         super(game, x, y, textureKey0);
         this.textureKey0 = textureKey0;
         this.textureKey1 = textureKey1;
@@ -15,6 +15,8 @@ class God extends Phaser.Sprite {
         this.life = life;
         this.level = 0;
         this.skills = {};
+        this.scale.x *= direction;
+        console.log(this.scale.x);
     }
 
     addSkill(key, skill) {
@@ -72,7 +74,7 @@ class God extends Phaser.Sprite {
         this.activeSkill2.performAction(enemy);
     }
 
-    show2RandomSkills() {
+    show2RandomSkills(x1, x2) {
         if (this.activeSkill1) {
             this.activeSkill1.removeFromGame();
         }
@@ -84,8 +86,8 @@ class God extends Phaser.Sprite {
         this.activateSkillKey2 = skills[Math.floor(Math.random() * skills.length)];
         this.activeSkill1 = this.skills[this.activateSkillKey1];
         this.activeSkill2 = this.skills[this.activateSkillKey2];
-        this.activeSkill1.addToGame(this.game, this.x - 100, 520);
-        this.activeSkill2.addToGame(this.game, this.x + 100, 520);
+        this.activeSkill1.addToGame(this.game, x1, 520);
+        this.activeSkill2.addToGame(this.game, x2, 520);
     }
 
     update() {
