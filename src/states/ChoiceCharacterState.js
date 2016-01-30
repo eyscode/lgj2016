@@ -13,6 +13,7 @@ class ChoiceCharacterState extends Phaser.State {
         this.game.stage.backgroundColor = '#182d3b';
         this.background = this.game.add.tileSprite(0, 0, 800, 600, 'background');
         this.button_back = this.game.add.button(10, 10, 'button_back', this.backAction, this, 0, 0, 0);
+        this.style = { font: "30px Arial", fill: "#ff0044", align: "center" };
 
         //definition select
         this.characters = this.game.add.tileSprite(this.game.world.centerX-300, this.game.world.centerY-122, 600, 244, 'characters');
@@ -42,29 +43,38 @@ class ChoiceCharacterState extends Phaser.State {
 
     }
     actionConfirm2(){
-        this.choice2 = true;
-        if(this.select2.x<=this.game.world.centerX-300){
-            this.choiceCharacter2 = 1;
-        }else if(this.select2.x<=this.game.world.centerX-100){
-            this.choiceCharacter2 = 2;
-        }else{
-            this.choiceCharacter2 = 3;
+        if(!this.choice2) {
+            this.choice2 = true;
+            if (this.select2.x <= this.game.world.centerX - 300) {
+                this.choiceCharacter2 = 1;
+            } else if (this.select2.x <= this.game.world.centerX - 100) {
+                this.choiceCharacter2 = 2;
+            } else {
+                this.choiceCharacter2 = 3;
+            }
+            console.log("choise2", this.choiceCharacter2);
+            this.text2 = this.game.add.text(this.game.world.centerX+200, this.game.world.centerY+125, "Ready", this.style);
+
+            this.passGame();
         }
-        console.log("choise2",this.choiceCharacter2);
-        this.passGame();
     }
 
     actionConfirm1(){
-        this.choice1 = true;
-        if(this.select1.x<=this.game.world.centerX-300){
-            this.choiceCharacter1 = 1;
-        }else if(this.select1.x<=this.game.world.centerX-100){
-            this.choiceCharacter1 = 2;
-        }else{
-            this.choiceCharacter1 = 3;
+        if(!this.choice1){
+            this.choice1 = true;
+            if(this.select1.x<=this.game.world.centerX-300){
+                this.choiceCharacter1 = 1;
+            }else if(this.select1.x<=this.game.world.centerX-100){
+                this.choiceCharacter1 = 2;
+            }else{
+                this.choiceCharacter1 = 3;
+            }
+            console.log("choise1",this.choiceCharacter1);
+            this.text1 = this.game.add.text(this.game.world.centerX-300, this.game.world.centerY+125, "Ready", this.style);
+
+            this.passGame();
         }
-        console.log("choise1",this.choiceCharacter1);
-        this.passGame();
+
     }
 
     moveLeftUser1(){
@@ -100,12 +110,16 @@ class ChoiceCharacterState extends Phaser.State {
         this.game.state.start('MenuState', true, true);
     }
 
-    passGame(){
-        if(this.choice1&&this.choice2){
-            this.game.state.start('GameState', true, true, this.choiceCharacter1, this.choiceCharacter2);
-        }
+    playGame(){
+        this.game.state.start('GameState', true, true, this.choiceCharacter1, this.choiceCharacter2);
+
     }
 
+    passGame(){
+        if(this.choice1&&this.choice2){
+            this.game.time.events.add(Phaser.Timer.SECOND * 1, this.playGame, this);
+        }
+    }
 
 }
 

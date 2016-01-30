@@ -4,6 +4,7 @@ class CreditsState extends Phaser.State {
     preload() {
         this.game.load.spritesheet('button_back', 'assets/menu/back_image.png', 50, 50);
         this.game.load.image('background','assets/menu/starfield.jpg');
+
     }
 
     create() {
