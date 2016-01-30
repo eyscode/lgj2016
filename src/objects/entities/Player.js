@@ -47,20 +47,20 @@ class Player {
     }
 
     attack1() {
-        this.god.attack1(this.enemy.god); // TODO: change god reference to user reference
+        this.god.attack1(this.enemy); // TODO: change god reference to user reference
     }
 
 
     attack2() {
-        this.god.attack2(this.enemy.god);
+        this.god.attack2(this.enemy);
     }
 
     attack3() {
-        this.god.attack3(this.enemy.god);
+        this.god.attack3(this.enemy);
     }
 
     attack4() {
-       this.god.attack4(this.enemy.god);
+       this.god.attack4(this.enemy);
     }
 
 
