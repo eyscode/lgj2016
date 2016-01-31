@@ -8,7 +8,7 @@ class SkillFactory {
             case 'Heal1':
                 return new Skill('Heal1', 23, [[0, 0, 3], [0, 3, 3], [0, 0, 0]], 'H', {value: 2}, game);
             case 'Destroy1':
-                return new Skill('Destroy1', 10, [[2, 2, 2], [0, 0, 0], [0, 0, 0]], 'D', {
+                return new Skill('Destroy1', 4, [[2, 2, 2], [0, 0, 0], [0, 0, 0]], 'D', {
                     value: 2,
                     typeResources: [1, 2, 3, 4]
                 }, game);
@@ -24,7 +24,7 @@ class SkillFactory {
                     typeResources: [1, 2, 3, 4]
                 }, game);
             case 'SuperHeal2':
-                return new Skill('SuperHeal2', 23, [[3, 0, 3], [0, 3, 0], [3, 0, 3]], 'SH', {value: 6}, game);
+                return new Skill('SuperHeal2', 10, [[3, 0, 3], [0, 3, 0], [3, 0, 3]], 'SH', {value: 6}, game);
             case 'Punch3':
                 return new Skill('Punch3', 6, [[0, 1, 0], [0, 0, 0], [2, 0, 3]], 'A', {value: 1}, game);
             case 'Heal3':
