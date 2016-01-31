@@ -54,7 +54,7 @@ class ChoiceCharacterState extends Phaser.State {
             this.choice2 = true;
             if (this.select2.x <= this.posx) {
                 this.choiceCharacter2 = 1;
-            } else if (this.select2.x <= this.posx + 400) {
+            } else if (this.select2.x <= this.posx + 200) {
                 this.choiceCharacter2 = 2;
             } else {
                 this.choiceCharacter2 = 3;
@@ -69,7 +69,7 @@ class ChoiceCharacterState extends Phaser.State {
             this.choice1 = true;
             if(this.select1.x<=this.posx){
                 this.choiceCharacter1 = 1;
-            }else if(this.select1.x<=this.posx+400){
+            }else if(this.select1.x<=this.posx+200){
                 this.choiceCharacter1 = 2;
             }else{
                 this.choiceCharacter1 = 3;
