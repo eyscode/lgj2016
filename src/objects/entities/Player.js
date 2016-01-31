@@ -12,7 +12,7 @@ class Player {
         this.matrixInputs = [[false, false, false], [false, false, false], [false, false, false]];
         this.resource = 0;
         this.direction = 1;
-        let lifeX = 5;
+        let lifeX = 10;
         let x = 200;
         if (this.type == 1) {
             this.direction = -1;
@@ -25,7 +25,7 @@ class Player {
             this.positionSkills = [410, 605];
             this.positionBoard = [503, 290];
             this.positionFlare = [620, 180];
-            lifeX = 405;
+            lifeX = 410;
             x = 600;
         }
         this.godFlare = new GodFlare(this.game, ...this.positionFlare);

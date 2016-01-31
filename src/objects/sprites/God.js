@@ -42,12 +42,12 @@ class God extends Phaser.Sprite {
     addLife(number) {
         let x = this.initialX;
         if (this.lifeParticles.length > 0) {
-            x = this.lifeParticles[this.lifeParticles.length - 1].emitter.x;
+            x = this.lifeParticles[this.lifeParticles.length - 1].fire.x;
         }
         console.log(x);
         for (let i = 1; i < number + 1; i++) {
             if (this.lifeParticles.length < 10) {
-                this.lifeParticles.push(new LifeFlare(this.game, x -10 + i * 35, 235));
+                this.lifeParticles.push(new LifeFlare(this.game, x  + i * 35, 250));
             } else {
                 break;
             }
@@ -57,7 +57,7 @@ class God extends Phaser.Sprite {
     setLife(x) {
         this.initialX = x;
         for (let i = 1; i < 11; i++) {
-            this.lifeParticles.push(new LifeFlare(this.game, this.initialX-10 + i * 35, 235));
+            this.lifeParticles.push(new LifeFlare(this.game, this.initialX + i * 35, 250));
         }
     }
 
