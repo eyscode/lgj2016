@@ -90,7 +90,7 @@ class Board {
     }
 
     createResourceAleatory() {
-        var st = [4];
+        var st = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4];
         var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;

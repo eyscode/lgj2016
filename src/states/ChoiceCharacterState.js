@@ -2,12 +2,12 @@ class ChoiceCharacterState extends Phaser.State {
 
 
     preload() {
-        this.game.load.spritesheet('button_back', 'assets/menu/back_image.png', 171/3, 60);
-        this.game.load.image('background','assets/menu/backgroundchoice.jpg');
+        this.game.load.spritesheet('button_back', 'assets/menu/back_image.png', 171 / 3, 60);
+        this.game.load.image('background', 'assets/menu/backgroundchoice.jpg');
 
-        this.game.load.image('select1','assets/menu/select1.png');
-        this.game.load.image('select2','assets/menu/select2.png');
-        this.game.load.image('ready','assets/menu/ready.png');
+        this.game.load.image('select1', 'assets/menu/select1.png');
+        this.game.load.image('select2', 'assets/menu/select2.png');
+        this.game.load.image('ready', 'assets/menu/ready.png');
         this.game.load.audio('choicesound', ['audio/select.ogg']);
     }
 
@@ -18,12 +18,12 @@ class ChoiceCharacterState extends Phaser.State {
         this.game.stage.backgroundColor = '#182d3b';
         this.background = this.game.add.tileSprite(0, 0, 800, 600, 'background');
         this.button_back = this.game.add.button(10, 10, 'button_back', this.backAction, this, 2, 1, 0);
-        this.style = { font: "30px Arial", fill: "#ff0044", align: "center" };
+        this.style = {font: "30px Arial", fill: "#ff0044", align: "center"};
 
         //definition select
         //this.characters = this.game.add.tileSprite(this.game.world.centerX-300, this.game.world.centerY-122, 600, 244, 'characters');
         this.select1 = this.game.add.tileSprite(this.posx, this.posy, 200, 244, 'select1');
-        this.select2 = this.game.add.tileSprite(this.posx+200, this.posy, 200, 244, 'select2');
+        this.select2 = this.game.add.tileSprite(this.posx + 400, this.posy, 200, 244, 'select2');
         this.choice1 = false;
         this.choice2 = false;
         this.choiceCharacter1 = 1;
@@ -45,12 +45,13 @@ class ChoiceCharacterState extends Phaser.State {
 
         this.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
         this.esc.onDown.add(this.backAction, this);
-        this.music = this.add.audio('choicesound',0.2, true);
+        this.music = this.add.audio('choicesound', 0.2, true);
         this.music.play();
 
     }
-    actionConfirm2(){
-        if(!this.choice2) {
+
+    actionConfirm2() {
+        if (!this.choice2) {
             this.choice2 = true;
             if (this.select2.x <= this.posx) {
                 this.choiceCharacter2 = 1;
@@ -59,66 +60,66 @@ class ChoiceCharacterState extends Phaser.State {
             } else {
                 this.choiceCharacter2 = 3;
             }
-            this.game.add.tileSprite(this.posx+500, this.posy - 85 , 100, 80, 'ready');
+            this.game.add.tileSprite(this.posx + 500, this.posy - 85, 100, 80, 'ready');
             this.passGame();
         }
     }
 
-    actionConfirm1(){
-        if(!this.choice1){
+    actionConfirm1() {
+        if (!this.choice1) {
             this.choice1 = true;
-            if(this.select1.x<=this.posx){
+            if (this.select1.x <= this.posx) {
                 this.choiceCharacter1 = 1;
-            }else if(this.select1.x<=this.posx+200){
+            } else if (this.select1.x <= this.posx + 200) {
                 this.choiceCharacter1 = 2;
-            }else{
+            } else {
                 this.choiceCharacter1 = 3;
             }
-            this.game.add.tileSprite(this.posx, this.posy - 85 , 100, 80, 'ready');
+            this.game.add.tileSprite(this.posx, this.posy - 85, 100, 80, 'ready');
             this.passGame();
         }
     }
 
-    moveLeftUser1(){
-        if(!this.choice1)
-        if(this.select1.x > this.posx ){
-            this.select1.x = this.select1.x - 200;
+    moveLeftUser1() {
+        if (!this.choice1)
+            if (this.select1.x > this.posx) {
+                this.select1.x = this.select1.x - 200;
 
-        }
+            }
     }
 
-    moveRigthUser1(){
-        if(!this.choice1)
-        if(this.select1.x < this.posx+400 ){
-            this.select1.x = this.select1.x + 200;
-        }
+    moveRigthUser1() {
+        if (!this.choice1)
+            if (this.select1.x < this.posx + 400) {
+                this.select1.x = this.select1.x + 200;
+            }
     }
 
-    moveLeftUser2(){
-        if(!this.choice2)
-        if(this.select2.x > this.posx ){
-            this.select2.x = this.select2.x - 200;
-        }
+    moveLeftUser2() {
+        if (!this.choice2)
+            if (this.select2.x > this.posx) {
+                this.select2.x = this.select2.x - 200;
+            }
     }
 
-    moveRigthUser2(){
-        if(!this.choice2)
-        if(this.select2.x < this.posx+400 ){
-            this.select2.x = this.select2.x + 200;
-        }
+    moveRigthUser2() {
+        if (!this.choice2)
+            if (this.select2.x < this.posx + 400) {
+                this.select2.x = this.select2.x + 200;
+            }
     }
 
-    backAction(){
+    backAction() {
         this.game.state.start('MenuState', true, true);
     }
 
-    playGame(){
+    playGame() {
         this.game.state.start('GameState', true, true, this.choiceCharacter1, this.choiceCharacter2);
 
     }
 
-    passGame(){
-        if(this.choice1&&this.choice2){
+    passGame() {
+        if (this.choice1 && this.choice2) {
             this.game.time.events.add(Phaser.Timer.SECOND * 1, this.playGame, this);
         }
     }
