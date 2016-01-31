@@ -8,6 +8,7 @@ class ChoiceCharacterState extends Phaser.State {
         this.game.load.image('select1','assets/menu/select1.png');
         this.game.load.image('select2','assets/menu/select2.png');
         this.game.load.image('ready','assets/menu/ready.png');
+        this.game.load.audio('choicesound', ['audio/select.ogg']);
     }
 
     create() {
@@ -22,7 +23,7 @@ class ChoiceCharacterState extends Phaser.State {
         //definition select
         //this.characters = this.game.add.tileSprite(this.game.world.centerX-300, this.game.world.centerY-122, 600, 244, 'characters');
         this.select1 = this.game.add.tileSprite(this.posx, this.posy, 200, 244, 'select1');
-        this.select2 = this.game.add.tileSprite(this.posx+400, this.posy, 200, 244, 'select2');
+        this.select2 = this.game.add.tileSprite(this.posx+200, this.posy, 200, 244, 'select2');
         this.choice1 = false;
         this.choice2 = false;
         this.choiceCharacter1 = 1;
@@ -44,6 +45,8 @@ class ChoiceCharacterState extends Phaser.State {
 
         this.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
         this.esc.onDown.add(this.backAction, this);
+        this.music = this.add.audio('choicesound',0.2, true);
+        this.music.play();
 
     }
     actionConfirm2(){
@@ -54,7 +57,7 @@ class ChoiceCharacterState extends Phaser.State {
             } else if (this.select2.x <= this.posx + 200) {
                 this.choiceCharacter2 = 2;
             } else {
-                this.choiceCharacter2 = 3;
+                //this.choiceCharacter2 = 3;
             }
             this.game.add.tileSprite(this.posx+500, this.posy - 85 , 100, 80, 'ready');
             this.passGame();
@@ -69,7 +72,7 @@ class ChoiceCharacterState extends Phaser.State {
             }else if(this.select1.x<=this.posx+200){
                 this.choiceCharacter1 = 2;
             }else{
-                this.choiceCharacter1 = 3;
+                //this.choiceCharacter1 = 3;
             }
             this.game.add.tileSprite(this.posx, this.posy - 85 , 100, 80, 'ready');
             this.passGame();
@@ -87,7 +90,7 @@ class ChoiceCharacterState extends Phaser.State {
 
     moveRigthUser1(){
         if(!this.choice1)
-        if(this.select1.x < this.posx+400 ){
+        if(this.select1.x < this.posx+200 ){
             this.select1.x = this.select1.x + 200;
         }
     }
@@ -101,7 +104,7 @@ class ChoiceCharacterState extends Phaser.State {
 
     moveRigthUser2(){
         if(!this.choice2)
-        if(this.select2.x < this.posx+400 ){
+        if(this.select2.x < this.posx+200 ){
             this.select2.x = this.select2.x + 200;
         }
     }

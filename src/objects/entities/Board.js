@@ -75,7 +75,7 @@ class Board {
     }
 
     createResourceAleatory() {
-        var st = [1, 1, 2, 2, 3];
+        var st = [1,1,1,1,2,2,2,2,3,3,3,4];
         var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;
@@ -122,7 +122,7 @@ class Board {
                 let r = sprite.resource;
                 result = [false, r];
             }
-            sprite.destroy();
+            sprite.removeCel();
             this.sprites[row][col] = null;
             return result;
         } else {

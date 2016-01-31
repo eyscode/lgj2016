@@ -18,7 +18,7 @@ class Cel extends Phaser.Sprite {
         if(this.on){
             this.on = false;
             this.frame = this.resource+3;
-            this.game.time.events.add(Phaser.Timer.SECOND * 5, this.turnOnCel, this);
+            this.game.time.events.add(Phaser.Timer.SECOND * 7, this.turnOnCel, this);
         }
     }
 
@@ -29,5 +29,13 @@ class Cel extends Phaser.Sprite {
             this.frame = this.resource-1;
         }
     }
+    removeCel(){
+        let last = this;
+        let tween =  this.game.add.tween(this).to( { alpha: 0 }, 2000, Phaser.Easing.Bounce.Out, true);
+        tween.onComplete.add(function () {
+            last.destroy();
+        }, this);
+    }
+
 }
 export default Cel;

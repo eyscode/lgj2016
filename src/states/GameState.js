@@ -27,6 +27,7 @@ class GameState extends Phaser.State {
         this.game.load.image('godFlare', 'assets/particles/blue.png');
         this.game.load.image('lifeFlare', 'assets/particles/yellow.png');
         this.game.load.audio('nox1', ['audio/nox1.mp3']);
+        this.game.load.audio('gamesound', ['audio/battle.ogg']);
     }
 
     create() {
@@ -118,6 +119,8 @@ class GameState extends Phaser.State {
         r3User2Key.onDown.add(this.player2.pressResource.bind(this.player2, 3), this);
         var r4User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_ADD);
         r4User2Key.onDown.add(this.player2.pressResource.bind(this.player2, 4), this);
+        this.music = this.add.audio('gamesound',0.2, true);
+        this.music.play();
     }
 
 
