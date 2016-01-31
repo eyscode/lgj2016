@@ -16,9 +16,9 @@ class WinnerState extends Phaser.State {
         this.background = this.game.add.tileSprite(0, 0, 800, 600, 'background');
         this.button_play = this.game.add.button(this.game.world.centerX - 100, 500, 'button_play', this.actionOnClickPlay, this, 2, 1, 0);
         if(this.player == 1){
-            this.game.add.tileSprite(this.game.world.centerX-125, 400, 250, 200, 'winner1');
+            this.game.add.tileSprite(this.game.world.centerX-125, 320, 250, 200, 'winner1');
         }else{
-            this.game.add.tileSprite(this.game.world.centerX-125, 400, 250, 200, 'winner2');
+            this.game.add.tileSprite(this.game.world.centerX-125, 320, 250, 200, 'winner2');
         }
 
     }

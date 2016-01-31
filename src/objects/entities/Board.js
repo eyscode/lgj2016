@@ -187,5 +187,21 @@ class Board {
         for (var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
         return array;
     }
+
+    destroy(){
+        this.sprite1.destroy();
+        this.sprite2.destroy();
+        this.sprite3.destroy();
+        this.sprite4.destroy();
+
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                if (this.sprites[i][j] != null) {
+                    let ss = this.sprites[i][j];
+                    ss.destroy();
+                }
+            }
+        }
+    }
 }
 export default Board;

@@ -49,8 +49,17 @@ class Player {
 
     updatePlayer() {
         if (this.god.lifeParticles.length <= 0) {
-            this.game.state.start("WinnerState", true, true, this.type);
+            this.game.time.events.add(Phaser.Timer.SECOND * 2, this.destroyall, this);
         }
+    }
+
+    destroyall() {
+        this.destroy();
+        this.enemy.destroy();
+        let t = 1;
+        if (this.type == 1)
+            t = 2;
+        this.game.state.start("WinnerState", true, true, t);
     }
 
     attack1() {
@@ -117,5 +126,13 @@ class Player {
         }
     }
 
+    destroy() {
+        this.god.destroy();
+        this.board.destroy();
+
+    }
 }
-export default Player;
+
+export
+    default
+    Player;
