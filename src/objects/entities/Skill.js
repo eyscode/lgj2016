@@ -88,11 +88,19 @@ export default class Skill {
     }
 
     removeFromGame() {
-        let last = this.sprite;
+        let lastSprite = this.sprite;
+        let lastGraphics = this.graphics;
+        let lastText = this.text;
         this.game.add.tween(this.sprite).to({alpha: 0}, 3000, Phaser.Easing.Quadratic.InOut, true);
-        let tween = this.game.add.tween(this.sprite.scale).to({x: 2, y: 2}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        this.game.add.tween(this.graphics).to({alpha: 0}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        this.game.add.tween(this.text).to({alpha: 0}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        this.game.add.tween(this.sprite.scale).to({x: 2, y: 2}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        this.game.add.tween(this.graphics.scale).to({x: 2, y: 2}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        let tween = this.game.add.tween(this.text.scale).to({x: 2, y: 2}, 3000, Phaser.Easing.Quadratic.InOut, true);
         tween.onComplete.add(function () {
-            last.destroy();
+            lastSprite.destroy();
+            lastGraphics.destroy();
+            lastText.destroy();
         }, this);
     }
 
