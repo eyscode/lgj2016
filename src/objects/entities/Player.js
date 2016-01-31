@@ -14,11 +14,11 @@ class Player {
         this.direction = 1;
         if (this.type == 1) {
             this.direction = -1;
-            this.positionGod = [0, 150];
+            this.positionGod = [200, 120];
             this.positionSkills = [100, 300];
             this.positionBoard = [100, this.game.world.centerY + 100];
         } else {
-            this.positionGod = [350, 150];
+            this.positionGod = [650, 120];
             this.positionSkills = [500, 700];
             this.positionBoard = [this.game.world.centerX + 100, this.game.world.centerY];
         }

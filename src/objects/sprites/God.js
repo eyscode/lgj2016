@@ -10,7 +10,7 @@ class God extends Phaser.Sprite {
         this.anchor.y = 0.5;
         this.animations.add('default');
         this.animations.play('default', 30, true);
-        this.game.add.tween(this).to({y: 200}, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
+        this.game.add.tween(this).to({y: 135}, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
         this.game.stage.addChild(this);
         this.life = life;
         this.level = 0;
@@ -86,8 +86,8 @@ class God extends Phaser.Sprite {
         this.activateSkillKey2 = skills[Math.floor(Math.random() * skills.length)];
         this.activeSkill1 = this.skills[this.activateSkillKey1];
         this.activeSkill2 = this.skills[this.activateSkillKey2];
-        this.activeSkill1.addToGame(this.game, x1, 520);
-        this.activeSkill2.addToGame(this.game, x2, 520);
+        this.activeSkill1.addToGame(this.game, x1, 540);
+        this.activeSkill2.addToGame(this.game, x2, 540);
     }
 
     update() {
