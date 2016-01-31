@@ -10,7 +10,13 @@ class GameState extends Phaser.State {
     }
 
     preload() {
-        this.game.load.atlasXML('seacreatures', 'assets/sprites/seacreatures.png', 'assets/sprites/seacreatures.xml');
+        let text;
+        this.game.load.onLoadStart.add(function () {
+            text = this.game.add.text(32, 32, "Loading ...", {fill: '#ffffff'});
+        }, this);
+        this.game.load.onLoadComplete.add(function () {
+            text.destroy();
+        }, this);
         this.game.load.atlasXML('ro_Idle', 'assets/sprites/ro_Idle.png', 'assets/sprites/ro_Idle.xml');
         this.game.load.atlasXML('ro_Attack', 'assets/sprites/ro_Attack.png', 'assets/sprites/ro_Attack.xml');
         this.game.load.atlasXML('ro_Full', 'assets/sprites/ro_Full.png', 'assets/sprites/ro_Full.xml');
@@ -21,12 +27,18 @@ class GameState extends Phaser.State {
         this.game.load.atlasXML('daño_h', 'assets/sprites/daño_h.png', 'assets/sprites/daño_h.xml');
         this.game.load.atlasXML('romper_h', 'assets/sprites/romper_h.png', 'assets/sprites/romper_h.xml');
         this.game.load.atlasXML('postura_h', 'assets/sprites/postura_h.png', 'assets/sprites/postura_h.xml');
+
+        this.game.load.atlasXML('pose_m', 'assets/sprites/pose_m.png', 'assets/sprites/pose_m.xml');
+        this.game.load.atlasXML('ataque_m', 'assets/sprites/ataque_m.png', 'assets/sprites/ataque_m.xml');
+        this.game.load.atlasXML('cura_m', 'assets/sprites/cura_m.png', 'assets/sprites/cura_m.xml');
+
         this.game.load.atlasXML('fire', 'assets/sprites/fx_fire.png', 'assets/sprites/fx_fire.xml');
         this.game.load.spritesheet('simbols', 'assets/menu/simbols.png', 252 / 4, 63, 8);
-        this.game.load.spritesheet('skills', 'assets/sprites/skills.png', 80, 80, 24);
+        this.game.load.spritesheet('skills', 'assets/sprites/skills.png', 60, 60, 24);
         this.game.load.image('interfase', 'assets/menu/interfase.jpg');
         this.game.load.image('godFlare', 'assets/particles/blue.png');
         this.game.load.image('lifeFlare', 'assets/particles/yellow.png');
+        this.game.load.image('diamond', 'assets/menu/diamante.png');
         this.game.load.audio('nox1', ['audio/nox1.mp3']);
         this.game.load.audio('gamesound', ['audio/battle.ogg']);
     }
@@ -120,7 +132,7 @@ class GameState extends Phaser.State {
         r3User2Key.onDown.add(this.player2.pressResource.bind(this.player2, 3), this);
         var r4User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_ADD);
         r4User2Key.onDown.add(this.player2.pressResource.bind(this.player2, 4), this);
-        this.music = this.add.audio('gamesound',0.2, true);
+        this.music = this.add.audio('gamesound', 0.2, true);
         this.music.play();
     }
 
