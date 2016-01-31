@@ -2,7 +2,7 @@ class ChoiceCharacterState extends Phaser.State {
 
 
     preload() {
-        this.game.load.spritesheet('button_back', 'assets/menu/back_image.png', 231/3, 60);
+        this.game.load.spritesheet('button_back', 'assets/menu/back_image.png', 171/3, 60);
         this.game.load.image('background','assets/menu/backgroundchoice.jpg');
 
         this.game.load.image('select1','assets/menu/select1.png');

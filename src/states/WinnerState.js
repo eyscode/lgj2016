@@ -26,19 +26,19 @@ class WinnerState extends Phaser.State {
         }
         if(this.hero == 1){
             //this.game.add.tileSprite(this.game.world.centerX-125, 320, 250, 200, 'winner1');
-            let animhero = this.game.add.sprite(this.game.world.centerX, 100, 'hero1');
+            let animhero = this.game.add.sprite(this.game.world.centerX-200, 50, 'hero1');
             animhero.animations.add('default');
             animhero.animations.play('default', 30, true);
 
             //  Bob the octopus up and down with a tween
-            this.game.add.tween(animhero).to({ y: 200 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
+            this.game.add.tween(animhero).to({ y: 50 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
         }else{
-            let animhero = this.game.add.sprite(this.game.world.centerX, 100, 'hero2');
+            let animhero = this.game.add.sprite(this.game.world.centerX-200, 50, 'hero2');
             animhero.animations.add('default');
             animhero.animations.play('default', 30, true);
 
             //  Bob the octopus up and down with a tween
-            this.game.add.tween(animhero).to({ y: 200 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
+            this.game.add.tween(animhero).to({ y: 50 }, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
         }
 
     }
