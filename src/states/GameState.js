@@ -31,27 +31,27 @@ class GameState extends Phaser.State {
         //Key detection user 1
         var attack1User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
         attack1User1Key.onDown.add(this.player1.attack1.bind(this.player1), this);
-        var attack2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+        var attack2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.B);
         attack2User1Key.onDown.add(this.player1.attack2.bind(this.player1), this);
 
         //cels
-        var cel1User1Key = this.game.input.keyboard.addKey(49);
+        var cel1User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
         cel1User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 1), this);
-        var cel2User1Key = this.game.input.keyboard.addKey(50);
+        var cel2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.E);
         cel2User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 2), this);
-        var cel3User1Key = this.game.input.keyboard.addKey(51);
+        var cel3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.R);
         cel3User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 3), this);
-        var cel4User1Key = this.game.input.keyboard.addKey(52);
+        var cel4User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
         cel4User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 4), this);
-        var cel5User1Key = this.game.input.keyboard.addKey(53);
+        var cel5User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
         cel5User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 5), this);
-        var cel6User1Key = this.game.input.keyboard.addKey(54);
+        var cel6User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.F);
         cel6User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 6), this);
-        var cel7User1Key = this.game.input.keyboard.addKey(55);
+        var cel7User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
         cel7User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 7), this);
-        var cel8User1Key = this.game.input.keyboard.addKey(56);
+        var cel8User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.C);
         cel8User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 8), this);
-        var cel9User1Key = this.game.input.keyboard.addKey(57);
+        var cel9User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.V);
         cel9User1Key.onDown.add(this.player1.pressCel.bind(this.player1, 9), this);
 
         //resources
@@ -59,9 +59,9 @@ class GameState extends Phaser.State {
         r1User1Key.onDown.add(this.player1.pressResource.bind(this.player1, 1), this);
         var r2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
         r2User1Key.onDown.add(this.player1.pressResource.bind(this.player1, 2), this);
-        var r3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
+        var r3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.T);
         r3User1Key.onDown.add(this.player1.pressResource.bind(this.player1, 3), this);
-        var r4User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+        var r4User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.G);
         r4User1Key.onDown.add(this.player1.pressResource.bind(this.player1, 4), this);
 
 
