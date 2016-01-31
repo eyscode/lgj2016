@@ -16,10 +16,12 @@ class GameState extends Phaser.State {
         this.game.load.atlasXML('ro_Attack', 'assets/sprites/ro_Attack.png', 'assets/sprites/ro_Attack.xml');
         this.game.load.spritesheet('simbols', 'assets/menu/simbols.jpg', 300 / 4, 100, 4);
         this.game.load.spritesheet('skills', 'assets/sprites/skills.jpg', 768 / 6, 512 / 4, 24);
+        this.game.load.image('interfase', 'assets/menu/interfase.jpg');
     }
 
     create() {
-        this.game.stage.backgroundColor = '#1873CE';
+        this.background = this.game.add.tileSprite(0, 0, 800, 600, 'interfase');
+
         this.player1 = new Player(this.game, 1, this.param1);
         this.player2 = new Player(this.game, 2, this.param2);
         this.player1.setEnemy(this.player2);
@@ -98,7 +100,6 @@ class GameState extends Phaser.State {
         var r4User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_ADD);
         r4User2Key.onDown.add(this.player2.pressResource.bind(this.player2,4), this);
     }
-
 
 
     update() {
