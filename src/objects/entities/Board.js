@@ -109,18 +109,23 @@ class Board {
     }
 
     destroyResource(num) {
+        var result = false;
         var col = (num - 1) % 3;
         var row = (Math.floor((num - 1) / 3)) % 3;
         var resource = this.matrix[row][col];
         if (resource != 0) {
             this.matrix[row][col] = 0;
             var sprite = this.sprites[row][col];
+            if(sprite.on && sprite.resource!=4){
+               result = true;
+            }else{
+                result = false;
+            }
             sprite.destroy();
             this.sprites[row][col] = null;
-            this.logmatrix();
-            return true;
+            return result;
         } else {
-            return false;
+            return result;
         }
 
     }
@@ -162,7 +167,6 @@ class Board {
                             position_allow.push([i, j]);
                         }
                     }
-
                 }
             }
         }
@@ -177,7 +181,6 @@ class Board {
         }
         this.logmatrix();
     }
-
 
     shuffle(array) {
         for (var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);

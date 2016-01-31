@@ -90,7 +90,10 @@ class Player {
         var col = (cel - 1) % 3;
         var row = (Math.floor((cel - 1) / 3)) % 3;
         if (this.matrixInputs[col][row]) {
-            this.board.destroyResource(cel);
+            var misslife = this.board.destroyResource(cel);
+            if(misslife){
+                this.god.subtractLife(1);
+            }
             this.refreshCels();
         } else {
             if (this.resource != 0) {
