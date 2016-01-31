@@ -30,16 +30,16 @@ class ChoiceCharacterState extends Phaser.State {
 
         this.choiceUser1left = this.game.input.keyboard.addKey(Phaser.Keyboard.A);
         this.choiceUser1left.onDown.add(this.moveLeftUser1, this);
-        this.choiceUser1Rigth = this.game.input.keyboard.addKey(Phaser.Keyboard.S);
+        this.choiceUser1Rigth = this.game.input.keyboard.addKey(Phaser.Keyboard.D);
         this.choiceUser1Rigth.onDown.add(this.moveRigthUser1, this);
-        this.confirm1 = this.game.input.keyboard.addKey(Phaser.Keyboard.X);
+        this.confirm1 = this.game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
         this.confirm1.onDown.add(this.actionConfirm1, this);
 
         this.choiceUser2left = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_4);
         this.choiceUser2left.onDown.add(this.moveLeftUser2, this);
         this.choiceUser2Rigth = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_6);
         this.choiceUser2Rigth.onDown.add(this.moveRigthUser2, this);
-        this.confirm2 = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_0);
+        this.confirm2 = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_ENTER);
         this.confirm2.onDown.add(this.actionConfirm2, this);
 
         this.esc = this.game.input.keyboard.addKey(Phaser.Keyboard.ESC);
