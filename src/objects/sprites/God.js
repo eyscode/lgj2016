@@ -1,5 +1,7 @@
+import LifeFlare from '../entities/LifeFlare';
+
 class God extends Phaser.Sprite {
-    constructor(game, direction, x, y, textureKey0, textureKey1, textureKey2, textureKey3, textureKey4, life) {
+    constructor(game, direction, x, y, textureKey0, textureKey1, textureKey2, textureKey3, textureKey4) {
         super(game, x, y, textureKey0);
         this.textureKey0 = textureKey0;
         this.textureKey1 = textureKey1;
@@ -12,11 +14,41 @@ class God extends Phaser.Sprite {
         this.animations.play('default', 30, true);
         this.game.add.tween(this).to({y: 135}, 2000, Phaser.Easing.Quadratic.InOut, true, 0, 1000, true);
         this.game.stage.addChild(this);
-        this.life = life;
         this.level = 0;
         this.skills = {};
         this.scale.x *= direction;
-        console.log(this.scale.x);
+        this.lifeParticles = [];
+    }
+
+    subtractLife(number) {
+        if (this.lifeParticles.length > number) {
+            for (let i = 0; i < number; i++) {
+                let p = this.lifeParticles.pop();
+                p.destroy();
+            }
+        }
+    }
+
+    addLife(number) {
+        let x = this.initialX;
+        if (this.lifeParticles.length > 0) {
+            x = this.lifeParticles[this.lifeParticles.length - 1].emitter.x;
+        }
+        console.log(x);
+        for (let i = 1; i < number + 1; i++) {
+            if (this.lifeParticles.length < 10) {
+                this.lifeParticles.push(new LifeFlare(this.game, x + i * 35, 245));
+            } else {
+                break;
+            }
+        }
+    }
+
+    setLife(x) {
+        this.initialX = x;
+        for (let i = 1; i < 11; i++) {
+            this.lifeParticles.push(new LifeFlare(this.game, this.initialX + i * 35, 245));
+        }
     }
 
     addSkill(key, skill) {
@@ -86,12 +118,12 @@ class God extends Phaser.Sprite {
         this.activateSkillKey2 = skills[Math.floor(Math.random() * skills.length)];
         this.activeSkill1 = this.skills[this.activateSkillKey1];
         this.activeSkill2 = this.skills[this.activateSkillKey2];
-        this.activeSkill1.addToGame(this.game, x1, 540);
-        this.activeSkill2.addToGame(this.game, x2, 540);
+        this.activeSkill1.addToGame(this.game, x1, 570);
+        this.activeSkill2.addToGame(this.game, x2, 570);
     }
 
     update() {
-        if (this.life <= 0) {
+        if (this.lifeParticles.length <= 0) {
             console.log("ME MORI");
         }
     }

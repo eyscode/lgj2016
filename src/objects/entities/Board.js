@@ -1,4 +1,7 @@
+import LifeFlare from './LifeFlare';
+import GodFlare from './GodFlare';
 import Cel from './../sprites/Cel';
+
 class Board {
 
     constructor(game, x, y) {
@@ -10,6 +13,8 @@ class Board {
         this.spritenumber=0;
         this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
+        new GodFlare(this.game, 200, 180);
+        new GodFlare(this.game, 620, 180);
         this.sprite1 = this.game.add.sprite(this.x - 88, this.y + 5 , 'simbols');
         this.sprite1.frame = 4;
         this.sprite2 = this.game.add.sprite(this.x - 88, this.y + 100 , 'simbols');
@@ -40,7 +45,6 @@ class Board {
                 return false;
             }
         }
-    }
 
     onNewTimeResources(resource){
         switch (resource){
@@ -106,7 +110,6 @@ class Board {
     destroyResource(num) {
         var col = (num - 1) % 3;
         var row = (Math.floor((num - 1) / 3)) % 3;
-        console.log("destroy ", row,col);
         var resource = this.matrix[row][col];
         if (resource != 0) {
             this.matrix[row][col] = 0;
@@ -122,34 +125,30 @@ class Board {
     }
 
     compareMatrix(matrix) {
-        var m = [];
-        for (var i = 0; i < 3; i++) {
-            for (var j = 0; j < 3; j++) {
-                if (matrix[i][j] != 0) {
-                    if (matrix[i][j] != this.matrix[i][j]) {
-                        return false;
-                    }else{
-                        if(this.sprites[i][j].on){
-                            m.push([i,j])
-                        }else{
+            var m = [];
+            for (var i = 0; i < 3; i++) {
+                for (var j = 0; j < 3; j++) {
+                    if (matrix[i][j] != 0) {
+                        if (matrix[i][j] != this.matrix[i][j]) {
                             return false;
+                        }else{
+                            if(this.sprites[i][j].on){
+                                m.push([i,j])
+                            }else{
+                                return false;
+                            }
+
                         }
 
                     }
-
                 }
             }
-        }
-        for (var w = 0; w < m.length; w++) {
-            var item = m[w];
-            var ss = this.sprites[item[0]][item[1]];
-            ss.turnOffCel();
-        }
-        return true;
-    }
-
-    returnNormal(){
-
+            for (var w = 0; w < m.length; w++) {
+                var item = m[w];
+                var ss = this.sprites[item[0]][item[1]];
+                ss.turnOffCel();
+            }
+            return true;
     }
 
     deleteRandom(numresource, allow) {

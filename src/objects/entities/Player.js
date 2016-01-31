@@ -8,10 +8,10 @@ class Player {
         this.type = type;
         this.game = game;
         this.typeGod = typeGod;
-        this.faith = 0;
-        this.matrixInputs= [[false,false,false],[false,false,false],[false,false,false]];
+        this.matrixInputs = [[false, false, false], [false, false, false], [false, false, false]];
         this.resource = 0;
         this.direction = 1;
+        let lifeX = 5;
         if (this.type == 1) {
             this.direction = -1;
             this.positionGod = [200, 120];
@@ -21,6 +21,7 @@ class Player {
             this.positionGod = [650, 120];
             this.positionSkills = [500, 700];
             this.positionBoard = [506, 289];
+            lifeX = 405;
         }
         this.board = new Board(game, ...this.positionBoard);
         switch (this.typeGod) {
@@ -35,6 +36,7 @@ class Player {
                 break;
         }
         this.god.show2RandomSkills(...this.positionSkills);
+        this.god.setLife(lifeX);
     }
 
     setEnemy(enemy) {
@@ -65,37 +67,37 @@ class Player {
         }
     }
 
-    refreshCels(){
-        this.matrixInputs= [[false,false,false],[false,false,false],[false,false,false]];
+    refreshCels() {
+        this.matrixInputs = [[false, false, false], [false, false, false], [false, false, false]];
     }
 
-    pressResource(){
+    pressResource() {
         var res = arguments[0];
-        if(this.resource!=0){
-            if(this.resource == res){
+        if (this.resource != 0) {
+            if (this.resource == res) {
                 this.resource = 0;
-            }else{
+            } else {
                 this.resource = res;
             }
-        }else{
+        } else {
             this.resource = res;
             this.refreshCels();
         }
     }
 
-    pressCel(){
+    pressCel() {
         var cel = arguments[0];
-        var col= (cel-1)%3;
-        var row = (Math.floor((cel-1)/3))%3;
-        if(this.matrixInputs[col][row]){
+        var col = (cel - 1) % 3;
+        var row = (Math.floor((cel - 1) / 3)) % 3;
+        if (this.matrixInputs[col][row]) {
             this.board.destroyResource(cel);
             this.refreshCels();
-        }else{
-            if(this.resource!=0){
+        } else {
+            if (this.resource != 0) {
                 this.board.insertResource(this.resource, cel);
                 this.refreshCels();
-                this.resource=0;
-            }else{
+                this.resource = 0;
+            } else {
                 this.refreshCels();
                 this.matrixInputs[col][row] = true;
             }
