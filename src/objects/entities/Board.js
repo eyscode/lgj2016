@@ -6,23 +6,23 @@ class Board {
         this.y = y;
         this.widthCel = 300 / 4;
         this.heightCel = 100;
-        this.matrix = [[0, 0, 2], [0, 2, 2], [0, 0, 0]];
+        this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
 
     }
 
     logmatrix() {
-        console.log("board ", this.matrix);
+        //console.log("board ", this.matrix);
     }
 
     insertResource(resource, num) {
         var col = (num - 1) % 3;
         var row = (Math.floor((num - 1) / 3)) % 3;
         if (this.matrix[col][row] == 0) {
-            this.matrix[col][row] = resource;
             var sprite = this.game.add.sprite(this.x + this.widthCel * col, this.y + this.heightCel * row, 'simbols');
             sprite.frame = resource - 1;
             this.sprites[col][row] = sprite;
+            this.matrix[col][row] = resource;
             this.logmatrix();
             return true;
         } else {
@@ -34,11 +34,12 @@ class Board {
     destroyResource(num) {
         var col = (num - 1) % 3;
         var row = (Math.floor((num - 1) / 3)) % 3;
+        console.log("destroy ", col,row);
         var resource = this.matrix[col][row];
         if (resource != 0) {
             this.matrix[col][row] = 0;
             var sprite = this.sprites[col][row];
-            sprite.kill();
+            sprite.destroy();
             this.sprites[col][row] = null;
             this.logmatrix();
             return true;

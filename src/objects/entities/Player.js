@@ -9,12 +9,14 @@ class Player {
         this.game = game;
         this.typeGod = typeGod;
         this.faith = 0;
+        this.matrixInputs= [[false,false,false],[false,false,false],[false,false,false]];
+        this.resource = 0;
         if (this.type == 1) {
             this.positionGod = [0, 150];
-            this.positionTable = [100, this.game.world.centerY + 100];
+            this.positionTable = [100, this.game.world.centerY ];
         } else {
             this.positionGod = [350, 150];
-            this.positionTable = [this.game.world.centerX + 100, this.game.world.centerY + 100];
+            this.positionTable = [this.game.world.centerX + 100, this.game.world.centerY];
         }
         this.board = new Board(game, this.positionTable[0], this.positionTable[1]);
         switch (this.typeGod) {
@@ -56,6 +58,43 @@ class Player {
             this.god.show2RandomSkills();
         } else {
             console.log("You must build more pylons :v");
+        }
+    }
+
+    refreshCels(){
+        this.matrixInputs= [[false,false,false],[false,false,false],[false,false,false]];
+    }
+
+    pressResource(){
+        var res = arguments[0];
+        if(this.resource!=0){
+            if(this.resource == res){
+                this.resource = 0;
+            }else{
+                this.resource = res;
+            }
+        }else{
+            this.resource = res;
+            this.refreshCels();
+        }
+    }
+
+    pressCel(){
+        var cel = arguments[0];
+        var col= (cel-1)%3;
+        var row = (Math.floor((cel-1)/3))%3;
+        if(this.matrixInputs[col][row]){
+            this.board.destroyResource(cel);
+            this.refreshCels();
+        }else{
+            if(this.resource!=0){
+                this.board.insertResource(this.resource, cel);
+                this.refreshCels();
+                this.resource=0;
+            }else{
+                this.refreshCels();
+                this.matrixInputs[col][row] = true;
+            }
         }
     }
 
