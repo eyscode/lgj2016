@@ -54,7 +54,6 @@ class Player {
     }
 
 
-
     destroyall() {
         this.destroy();
         this.enemy.destroy();
@@ -144,6 +143,14 @@ class Player {
         this.board.destroy();
 
     }
+
+    playN() {
+        if (this.board.verifyN()) {
+            let music = this.game.add.audio('nox1');
+            music.play();
+        }
+    }
+
 }
 
 export default Player;

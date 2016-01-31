@@ -75,7 +75,7 @@ class Board {
     }
 
     createResourceAleatory() {
-        var st = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4];
+        var st = [4];
         var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;
@@ -204,52 +204,62 @@ class Board {
         }
     }
 
-    verifyJ(){
+    verifyJ() {
         let band = false;
-        for(let i=1;i<=4;i++){
-            let mt = [[i,i,i],[0,i,0],[i,i,0]];
+        for (let i = 1; i <= 4; i++) {
+            let mt = [[i, i, i], [0, i, 0], [i, i, 0]];
             band = this.compareSimple(mt);
-            if(band)
+            if (band)
                 return band;
         }
+        return band;
     }
-    verifyC(){
+
+    verifyC() {
         let band = false;
-        for(let i=1;i<=4;i++){
-            let mt = [[i,i,i],[i,0,0],[i,i,i]];
+        for (let i = 1; i <= 4; i++) {
+            let mt = [[i, i, i], [i, 0, 0], [i, i, i]];
             band = this.compareSimple(mt);
-            if(band)
+            if (band)
                 return band;
         }
+        return band;
     }
-    verifyK(){
+
+    verifyK() {
         let band = false;
-        for(let i=1;i<=4;i++){
-            let mt = [[i,0,i],[i,i,0],[i,0,i]];
+        for (let i = 1; i <= 4; i++) {
+            let mt = [[i, 0, i], [i, i, 0], [i, 0, i]];
             band = this.compareSimple(mt);
-            if(band)
+            if (band)
                 return band;
         }
+        return band;
     }
-    verifyU(){
+
+    verifyU() {
         let band = false;
-        for(let i=1;i<=4;i++){
-            let mt = [[i,0,i],[i,0,i],[i,i,i]];
+        for (let i = 1; i <= 4; i++) {
+            let mt = [[i, 0, i], [i, 0, i], [i, i, i]];
             band = this.compareSimple(mt);
-            if(band)
+            if (band)
                 return band;
         }
+        return band;
     }
-    verifyN(){
+
+    verifyN() {
         let band = false;
-        for(let i=1;i<=4;i++){
-            let mt = [[i,0,i],[i,i,i],[i,0,i]];
+        for (let i = 1; i <= 4; i++) {
+            let mt = [[i, 0, i], [i, i, i], [i, 0, i]];
             band = this.compareSimple(mt);
-            if(band)
+            if (band)
                 return band;
         }
+        return band;
     }
-    compareSimple(mt){
+
+    compareSimple(mt) {
         for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 3; j++) {
                 if (mt[i][j] != 0) {

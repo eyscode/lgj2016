@@ -26,6 +26,7 @@ class GameState extends Phaser.State {
         this.game.load.image('interfase', 'assets/menu/interfase.jpg');
         this.game.load.image('godFlare', 'assets/particles/blue.png');
         this.game.load.image('lifeFlare', 'assets/particles/yellow.png');
+        this.game.load.audio('nox1', ['audio/nox1.mp3']);
     }
 
     create() {
@@ -36,12 +37,17 @@ class GameState extends Phaser.State {
         this.player1.setEnemy(this.player2);
         this.player2.setEnemy(this.player1);
 
+        // Cheats
+        var cheat1 = this.game.input.keyboard.addKey(Phaser.Keyboard.N);
+        cheat1.onDown.add(this.player1.playN.bind(this.player1), this);
+        cheat1.onDown.add(this.player2.playN.bind(this.player2), this);
+
         //Key detection user 1
         var attack1User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.Z);
         attack1User1Key.onDown.add(this.player1.attack1.bind(this.player1), this);
         var attack2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.B);
         attack2User1Key.onDown.add(this.player1.attack2.bind(this.player1), this);
-        var attack3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.N);
+        var attack3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.Y);
         attack3User1Key.onDown.add(this.player1.attack3.bind(this.player1), this);
 
         //cels
