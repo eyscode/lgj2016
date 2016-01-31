@@ -75,7 +75,7 @@ class Board {
     }
 
     createResourceAleatory() {
-        var st = [2, 2, 2, 1, 1];
+        var st = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 4, 4];
         var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;
@@ -188,7 +188,7 @@ class Board {
         return array;
     }
 
-    destroy(){
+    destroy() {
         this.sprite1.destroy();
         this.sprite2.destroy();
         this.sprite3.destroy();

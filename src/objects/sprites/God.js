@@ -121,6 +121,21 @@ class God extends Phaser.Sprite {
         this.activeSkill2.performAction(enemy);
     }
 
+    attack3(enemy) {
+        if (this.lastEvent) {
+            this.game.time.events.remove(this.lastEvent);
+            this.lastEvent = null;
+        }
+        if (this.lifeParticles.length >= 3) {
+            this.animate("a1");
+            this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * 2, this.restore, this);
+            enemy.god.subtractLife(enemy.god.lifeParticles.length - 1);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     show2RandomSkills(x1, x2) {
         if (this.activeSkill1) {
             this.activeSkill1.removeFromGame();

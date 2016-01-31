@@ -84,6 +84,15 @@ class Player {
         }
     }
 
+    attack3() {
+        if (this.god.attack3(this.enemy)) {
+            this.board.deleteRandom(3, [4]);
+            this.godFlare.downgrade();
+            this.godFlare.downgrade();
+            this.godFlare.downgrade();
+        }
+    }
+
     refreshCels() {
         this.matrixInputs = [[false, false, false], [false, false, false], [false, false, false]];
     }
@@ -117,7 +126,9 @@ class Player {
         } else {
             if (this.resource != 0) {
                 if (this.board.insertResource(this.resource, cel) && this.resource == 4) {
-                    this.godFlare.upgrade();
+                    if (this.godFlare.level < 3) {
+                        this.godFlare.upgrade();
+                    }
                 }
                 this.refreshCels();
                 this.resource = 0;
@@ -135,6 +146,4 @@ class Player {
     }
 }
 
-export
-    default
-    Player;
+export default Player;

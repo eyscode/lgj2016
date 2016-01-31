@@ -13,6 +13,9 @@ class GameState extends Phaser.State {
         this.game.load.atlasXML('seacreatures', 'assets/sprites/seacreatures.png', 'assets/sprites/seacreatures.xml');
         this.game.load.atlasXML('ro_Idle', 'assets/sprites/ro_Idle.png', 'assets/sprites/ro_Idle.xml');
         this.game.load.atlasXML('ro_Attack', 'assets/sprites/ro_Attack.png', 'assets/sprites/ro_Attack.xml');
+        this.game.load.atlasXML('ro_Full', 'assets/sprites/ro_Full.png', 'assets/sprites/ro_Full.xml');
+        this.game.load.atlasXML('ro_Hit', 'assets/sprites/ro_Hit.png', 'assets/sprites/ro_Hit.xml');
+        this.game.load.atlasXML('ro_Recharger', 'assets/sprites/ro_Recharger.png', 'assets/sprites/ro_Recharger.xml');
         this.game.load.atlasXML('ataque_h', 'assets/sprites/ataque_h.png', 'assets/sprites/ataque_h.xml');
         this.game.load.atlasXML('curar_h', 'assets/sprites/curar_h.png', 'assets/sprites/curar_h.xml');
         this.game.load.atlasXML('daño_h', 'assets/sprites/daño_h.png', 'assets/sprites/daño_h.xml');
@@ -38,6 +41,8 @@ class GameState extends Phaser.State {
         attack1User1Key.onDown.add(this.player1.attack1.bind(this.player1), this);
         var attack2User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.B);
         attack2User1Key.onDown.add(this.player1.attack2.bind(this.player1), this);
+        var attack3User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.N);
+        attack3User1Key.onDown.add(this.player1.attack3.bind(this.player1), this);
 
         //cels
         var cel1User1Key = this.game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -75,6 +80,8 @@ class GameState extends Phaser.State {
         attack1User2Key.onDown.add(this.player2.attack1.bind(this.player2), this);
         var attack2User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_DECIMAL);
         attack2User2Key.onDown.add(this.player2.attack2.bind(this.player2), this);
+        var attack3User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.PAGE_UP);
+        attack3User2Key.onDown.add(this.player2.attack3.bind(this.player2), this);
 
         //cels
         var cel1User2Key = this.game.input.keyboard.addKey(Phaser.Keyboard.NUMPAD_7);
