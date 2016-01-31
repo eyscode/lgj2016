@@ -15,7 +15,7 @@ export default class Skill {
 
     addToGame(game, x, y) {
 
-        this.graphics = game.add.graphics(x + 90, y);
+        this.graphics = game.add.graphics(x + 100, y + 10);
 
         for (var i = 0; i < 3; i++) {
             for (var j = 0; j < 3; j++) {
@@ -79,7 +79,7 @@ export default class Skill {
         game.add.tween(this.text).to({alpha: 1}, 3000, Phaser.Easing.Quadratic.InOut, true);
         game.add.tween(this.text.scale).to({x: 1, y: 1}, 3000, Phaser.Easing.Quadratic.InOut, true);
 
-        this.sprite = game.add.sprite(x, y, 'skills');
+        this.sprite = game.add.sprite(x + 30, y + 10, 'skills');
         this.sprite.frame = this.frame;
         this.sprite.scale.x = 2;
         this.sprite.scale.y = 2;

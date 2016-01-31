@@ -3,7 +3,6 @@ import GodFlare from './GodFlare';
 import Cel from './../sprites/Cel';
 
 class Board {
-
     constructor(game, x, y) {
         this.game = game;
         this.x = x;
@@ -22,6 +21,22 @@ class Board {
         this.sprite4 = this.game.add.sprite(this.x + 210, this.y + 100, 'simbols');
         this.sprite4.frame = 7;
         this.createTimeAleatory();
+    }
+
+    setDiamondX(x) {
+        this.diamond = this.game.add.sprite(0, 0, 'diamond');
+        this.diamond.anchor.set(0.5);
+        this.diamond.x = x;
+        this.diamond.y = 545;
+        this.diamond.alpha = 0;
+    }
+
+    appearDiamond() {
+        this.diamond.alpha = 1;
+    }
+
+    disappearDiamond() {
+        this.diamond.alpha = 0;
     }
 
     logmatrix() {
@@ -75,7 +90,7 @@ class Board {
     }
 
     createResourceAleatory() {
-        var st = [1, 1, 1, 2, 2, 2, 3, 3, 3, 4];
+        var st = [4];
         var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;

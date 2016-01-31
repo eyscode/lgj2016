@@ -13,18 +13,20 @@ class Player {
         this.resource = 0;
         this.direction = 1;
         let lifeX = 5;
+        let x = 200;
         if (this.type == 1) {
             this.direction = -1;
             this.positionGod = [200, 120];
-            this.positionSkills = [10, 240];
+            this.positionSkills = [10, 205];
             this.positionBoard = [108, 290];
             this.positionFlare = [200, 180];
         } else {
             this.positionGod = [600, 120];
-            this.positionSkills = [410, 640];
+            this.positionSkills = [410, 605];
             this.positionBoard = [503, 290];
             this.positionFlare = [620, 180];
             lifeX = 405;
+            x = 600;
         }
         this.godFlare = new GodFlare(this.game, ...this.positionFlare);
         this.board = new Board(game, ...this.positionBoard);
@@ -41,6 +43,7 @@ class Player {
         }
         this.god.show2RandomSkills(...this.positionSkills);
         this.god.setLife(lifeX);
+        this.board.setDiamondX(x);
     }
 
     setEnemy(enemy) {
@@ -61,7 +64,7 @@ class Player {
         let t = 1;
         if (this.type == 1)
             t = 2;
-        this.game.state.start("WinnerState", true, true, t,th);
+        this.game.state.start("WinnerState", true, true, t, th);
     }
 
     attack1() {
@@ -90,6 +93,7 @@ class Player {
             this.godFlare.downgrade();
             this.godFlare.downgrade();
             this.godFlare.downgrade();
+            this.board.disappearDiamond();
         }
     }
 
@@ -127,6 +131,11 @@ class Player {
             if (this.resource != 0) {
                 if (this.board.insertResource(this.resource, cel) && this.resource == 4) {
                     if (this.godFlare.level < 3) {
+                        if (this.godFlare.level == 2) {
+                            this.board.appearDiamond();
+                        } else {
+                            this.board.disappearDiamond();
+                        }
                         this.godFlare.upgrade();
                     }
                 }
