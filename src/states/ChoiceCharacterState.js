@@ -54,10 +54,10 @@ class ChoiceCharacterState extends Phaser.State {
             this.choice2 = true;
             if (this.select2.x <= this.posx) {
                 this.choiceCharacter2 = 1;
-            } else if (this.select2.x <= this.posx + 200) {
+            } else if (this.select2.x <= this.posx + 400) {
                 this.choiceCharacter2 = 2;
             } else {
-                //this.choiceCharacter2 = 3;
+                this.choiceCharacter2 = 3;
             }
             this.game.add.tileSprite(this.posx+500, this.posy - 85 , 100, 80, 'ready');
             this.passGame();
@@ -69,15 +69,14 @@ class ChoiceCharacterState extends Phaser.State {
             this.choice1 = true;
             if(this.select1.x<=this.posx){
                 this.choiceCharacter1 = 1;
-            }else if(this.select1.x<=this.posx+200){
+            }else if(this.select1.x<=this.posx+400){
                 this.choiceCharacter1 = 2;
             }else{
-                //this.choiceCharacter1 = 3;
+                this.choiceCharacter1 = 3;
             }
             this.game.add.tileSprite(this.posx, this.posy - 85 , 100, 80, 'ready');
             this.passGame();
         }
-
     }
 
     moveLeftUser1(){
@@ -90,7 +89,7 @@ class ChoiceCharacterState extends Phaser.State {
 
     moveRigthUser1(){
         if(!this.choice1)
-        if(this.select1.x < this.posx+200 ){
+        if(this.select1.x < this.posx+400 ){
             this.select1.x = this.select1.x + 200;
         }
     }
@@ -104,7 +103,7 @@ class ChoiceCharacterState extends Phaser.State {
 
     moveRigthUser2(){
         if(!this.choice2)
-        if(this.select2.x < this.posx+200 ){
+        if(this.select2.x < this.posx+400 ){
             this.select2.x = this.select2.x + 200;
         }
     }
