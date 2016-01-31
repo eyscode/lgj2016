@@ -2,6 +2,7 @@ import God1 from './../sprites/God1';
 import God2 from './../sprites/God2';
 import God3 from './../sprites/God3';
 import Board from './Board';
+import GodFlare from './GodFlare';
 
 class Player {
     constructor(game, type, typeGod) {
@@ -17,12 +18,15 @@ class Player {
             this.positionGod = [200, 120];
             this.positionSkills = [100, 300];
             this.positionBoard = [110, 289];
+            this.positionFlare = [200, 180];
         } else {
             this.positionGod = [650, 120];
             this.positionSkills = [500, 700];
             this.positionBoard = [506, 289];
+            this.positionFlare = [620, 180];
             lifeX = 405;
         }
+        this.godFlare = new GodFlare(this.game, ...this.positionFlare);
         this.board = new Board(game, ...this.positionBoard);
         switch (this.typeGod) {
             case 1:
@@ -44,7 +48,9 @@ class Player {
     }
 
     updatePlayer() {
-        this.god.update();
+        if (this.god.lifeParticles.length <= 0) {
+            this.game.state.start("WinnerState", true, true, this.type);
+        }
     }
 
     attack1() {
@@ -91,13 +97,17 @@ class Player {
         var row = (Math.floor((cel - 1) / 3)) % 3;
         if (this.matrixInputs[col][row]) {
             var misslife = this.board.destroyResource(cel);
-            if(misslife){
+            if (misslife[0]) {
                 this.god.subtractLife(1);
+            } else if (misslife[1] == 4) {
+                this.godFlare.downgrade();
             }
             this.refreshCels();
         } else {
             if (this.resource != 0) {
-                this.board.insertResource(this.resource, cel);
+                if (this.board.insertResource(this.resource, cel) && this.resource == 4) {
+                    this.godFlare.upgrade();
+                }
                 this.refreshCels();
                 this.resource = 0;
             } else {

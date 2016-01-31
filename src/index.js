@@ -3,6 +3,7 @@ import MenuState from 'states/MenuState';
 import ChoiceCharacterState from 'states/ChoiceCharacterState';
 import CreditsState from 'states/CreditsState';
 import InstructionsState from 'states/InstructionsState';
+import WinnerState from 'states/WinnerState';
 
 class Game extends Phaser.Game {
 
@@ -13,6 +14,7 @@ class Game extends Phaser.Game {
         this.state.add('ChoiceCharacterState', ChoiceCharacterState, false);
         this.state.add('CreditsState', CreditsState, false);
         this.state.add('InstructionsState', InstructionsState, false);
+        this.state.add('WinnerState', WinnerState, false);
         this.state.start('MenuState');
     }
 

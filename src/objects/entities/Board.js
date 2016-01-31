@@ -13,8 +13,6 @@ class Board {
         this.spritenumber = 0;
         this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
-        let g1 = new GodFlare(this.game, 200, 180);
-        let g2 = new GodFlare(this.game, 620, 180);
         this.sprite1 = this.game.add.sprite(this.x - 88, this.y + 5, 'simbols');
         this.sprite1.frame = 4;
         this.sprite2 = this.game.add.sprite(this.x - 88, this.y + 100, 'simbols');
@@ -77,7 +75,8 @@ class Board {
     }
 
     createResourceAleatory() {
-        var num = this.randomNumber(4, 1);
+        var st = [2, 2, 2, 1, 1];
+        var num = st[this.randomNumber(st.length - 1, 0)];
         console.log(num);
         this.spritenumber = 0;
         this.sprite1.frame = 4;
@@ -109,17 +108,19 @@ class Board {
     }
 
     destroyResource(num) {
-        var result = false;
+        var result = [false, null];
         var col = (num - 1) % 3;
         var row = (Math.floor((num - 1) / 3)) % 3;
-        var resource = this.matrix[row][col];
-        if (resource != 0) {
+        var cell = this.matrix[row][col];
+        if (cell != 0) {
             this.matrix[row][col] = 0;
             var sprite = this.sprites[row][col];
-            if(sprite.on && sprite.resource!=4){
-               result = true;
-            }else{
-                result = false;
+            if (sprite.on && sprite.resource != 4) {
+                let r = sprite.resource;
+                result = [true, r];
+            } else {
+                let r = sprite.resource;
+                result = [false, r];
             }
             sprite.destroy();
             this.sprites[row][col] = null;
