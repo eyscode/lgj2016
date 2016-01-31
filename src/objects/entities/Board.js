@@ -10,18 +10,18 @@ class Board {
         this.y = y;
         this.widthCel = 252 / 4;
         this.heightCel = 63;
-        this.spritenumber=0;
+        this.spritenumber = 0;
         this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
         new GodFlare(this.game, 200, 180);
         new GodFlare(this.game, 620, 180);
-        this.sprite1 = this.game.add.sprite(this.x - 88, this.y + 5 , 'simbols');
+        this.sprite1 = this.game.add.sprite(this.x - 88, this.y + 5, 'simbols');
         this.sprite1.frame = 4;
-        this.sprite2 = this.game.add.sprite(this.x - 88, this.y + 100 , 'simbols');
+        this.sprite2 = this.game.add.sprite(this.x - 88, this.y + 100, 'simbols');
         this.sprite2.frame = 5;
-        this.sprite3 = this.game.add.sprite(this.x + 210, this.y + 5 , 'simbols');
+        this.sprite3 = this.game.add.sprite(this.x + 210, this.y + 5, 'simbols');
         this.sprite3.frame = 6;
-        this.sprite4 = this.game.add.sprite(this.x + 210, this.y + 100 , 'simbols');
+        this.sprite4 = this.game.add.sprite(this.x + 210, this.y + 100, 'simbols');
         this.sprite4.frame = 7;
         this.createTimeAleatory();
     }
@@ -31,12 +31,12 @@ class Board {
     }
 
     insertResource(resource, num) {
-        if(resource == this.spritenumber){
+        if (resource == this.spritenumber) {
             var col = (num - 1) % 3;
             var row = (Math.floor((num - 1) / 3)) % 3;
-            console.log("introduce ", col,row);
+            console.log("introduce ", col, row);
             if (this.matrix[row][col] == 0) {
-                var sprite = new Cel(this.game,this, this.x + this.widthCel * col, this.y + this.heightCel * row, 'simbols', resource);
+                var sprite = new Cel(this.game, this, this.x + this.widthCel * col, this.y + this.heightCel * row, 'simbols', resource);
                 this.sprites[row][col] = sprite;
                 this.matrix[row][col] = resource;
                 this.onNewTimeResources(resource);
@@ -45,9 +45,10 @@ class Board {
                 return false;
             }
         }
+    }
 
-    onNewTimeResources(resource){
-        switch (resource){
+    onNewTimeResources(resource) {
+        switch (resource) {
             case 1:
                 this.sprite1.frame = 4;
                 this.spritenumber = 0;
@@ -68,22 +69,22 @@ class Board {
         this.createTimeAleatory();
     }
 
-    createTimeAleatory(){
-        if(this.spritenumber==0){
+    createTimeAleatory() {
+        if (this.spritenumber == 0) {
             this.game.time.events.add(Phaser.Timer.SECOND * 3, this.createResourceAleatory, this);
         }
 
     }
 
-    createResourceAleatory(){
-        var num = this.randomNumber(4,1);
+    createResourceAleatory() {
+        var num = this.randomNumber(4, 1);
         console.log(num);
         this.spritenumber = 0;
         this.sprite1.frame = 4;
         this.sprite2.frame = 5;
         this.sprite3.frame = 6;
         this.sprite4.frame = 7;
-        switch (num){
+        switch (num) {
             case 1:
                 this.sprite1.frame = 0;
                 this.spritenumber = 1;
@@ -103,7 +104,7 @@ class Board {
         }
     }
 
-    randomNumber(maximum,minimum){
+    randomNumber(maximum, minimum) {
         return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     }
 
@@ -125,30 +126,30 @@ class Board {
     }
 
     compareMatrix(matrix) {
-            var m = [];
-            for (var i = 0; i < 3; i++) {
-                for (var j = 0; j < 3; j++) {
-                    if (matrix[i][j] != 0) {
-                        if (matrix[i][j] != this.matrix[i][j]) {
+        var m = [];
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                if (matrix[i][j] != 0) {
+                    if (matrix[i][j] != this.matrix[i][j]) {
+                        return false;
+                    } else {
+                        if (this.sprites[i][j].on) {
+                            m.push([i, j])
+                        } else {
                             return false;
-                        }else{
-                            if(this.sprites[i][j].on){
-                                m.push([i,j])
-                            }else{
-                                return false;
-                            }
-
                         }
 
                     }
+
                 }
             }
-            for (var w = 0; w < m.length; w++) {
-                var item = m[w];
-                var ss = this.sprites[item[0]][item[1]];
-                ss.turnOffCel();
-            }
-            return true;
+        }
+        for (var w = 0; w < m.length; w++) {
+            var item = m[w];
+            var ss = this.sprites[item[0]][item[1]];
+            ss.turnOffCel();
+        }
+        return true;
     }
 
     deleteRandom(numresource, allow) {
