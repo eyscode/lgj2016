@@ -12,7 +12,7 @@ class SkillFactory {
                 typeResources: [1, 2]
             });
         } else if (name == 'FaithRitual') {
-            return new Skill('FaithRitual', 14, [[3, 3, 3], [3, 3, 3], [0, 0, 0]], 'A', {attackValue: 500});
+            return new Skill('FaithRitual', 14, [[2, 0, 2], [0, 1, 0], [0, 0, 2]], 'A', {attackValue: 500});
         }
     }
 }

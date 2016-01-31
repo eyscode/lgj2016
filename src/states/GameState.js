@@ -14,7 +14,7 @@ class GameState extends Phaser.State {
         this.game.load.atlasXML('seacreatures', 'assets/sprites/seacreatures.png', 'assets/sprites/seacreatures.xml');
         this.game.load.atlasXML('ro_Idle', 'assets/sprites/ro_Idle.png', 'assets/sprites/ro_Idle.xml');
         this.game.load.atlasXML('ro_Attack', 'assets/sprites/ro_Attack.png', 'assets/sprites/ro_Attack.xml');
-        this.game.load.spritesheet('simbols', 'assets/menu/simbols.jpg', 300 / 4, 100, 4);
+        this.game.load.spritesheet('simbols', 'assets/menu/simbols.png', 252 / 4, 63, 4);
         this.game.load.spritesheet('skills', 'assets/sprites/skills.png', 768 / 6, 512 / 4, 24);
         this.game.load.image('interfase', 'assets/menu/interfase.jpg');
     }

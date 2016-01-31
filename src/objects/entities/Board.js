@@ -4,8 +4,8 @@ class Board {
         this.game = game;
         this.x = x;
         this.y = y;
-        this.widthCel = 300 / 4;
-        this.heightCel = 100;
+        this.widthCel = 252 / 4;
+        this.heightCel = 63;
         this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
 
