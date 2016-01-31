@@ -21,8 +21,11 @@ class God extends Phaser.Sprite {
     }
 
     subtractLife(number) {
-        if (this.lifeParticles.length > number) {
+        if (this.lifeParticles.length > 0) {
             for (let i = 0; i < number; i++) {
+                if (this.lifeParticles.length <= 0) {
+                    break;
+                }
                 let p = this.lifeParticles.pop();
                 p.destroy();
             }

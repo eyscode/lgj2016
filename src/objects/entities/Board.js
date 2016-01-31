@@ -13,8 +13,8 @@ class Board {
         this.spritenumber = 0;
         this.matrix = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
         this.sprites = [[null, null, null], [null, null, null], [null, null, null]];
-        new GodFlare(this.game, 200, 180);
-        new GodFlare(this.game, 620, 180);
+        let g1 = new GodFlare(this.game, 200, 180);
+        let g2 = new GodFlare(this.game, 620, 180);
         this.sprite1 = this.game.add.sprite(this.x - 88, this.y + 5, 'simbols');
         this.sprite1.frame = 4;
         this.sprite2 = this.game.add.sprite(this.x - 88, this.y + 100, 'simbols');

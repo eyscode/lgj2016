@@ -26,14 +26,10 @@ export default class Skill {
         console.log(`Skill used ${this.name}`);
         if (this.type == 'A') {
             enemy.god.subtractLife(this.obj.attackValue);
-            console.log(`Value attack ${this.obj.attackValue}`);
         } else if (this.type == 'H') {
             this.owner.addLife(this.obj.healValue);
-            console.log(`Value heal ${this.obj.healValue}`);
         } else if (this.type == 'D') {
             enemy.board.deleteRandom(this.obj.totalResources, this.obj.typeResources);
-        } else if (this.type == 'S') {
-            //TODO: implement special
         }
     }
 }
