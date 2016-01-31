@@ -20,7 +20,7 @@ class Player {
         } else {
             this.positionGod = [350, 150];
             this.positionSkills = [500, 700];
-            this.positionBoard = [this.game.world.centerX + 100, this.game.world.centerY + 100];
+            this.positionBoard = [this.game.world.centerX + 100, this.game.world.centerY];
         }
         this.board = new Board(game, ...this.positionBoard);
         switch (this.typeGod) {
