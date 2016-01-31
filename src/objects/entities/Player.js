@@ -53,6 +53,8 @@ class Player {
         }
     }
 
+
+
     destroyall() {
         this.destroy();
         this.enemy.destroy();

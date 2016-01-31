@@ -203,5 +203,63 @@ class Board {
             }
         }
     }
+
+    verifyJ(){
+        let band = false;
+        for(let i=1;i<=4;i++){
+            let mt = [[i,i,i],[0,i,0],[i,i,0]];
+            band = this.compareSimple(mt);
+            if(band)
+                return band;
+        }
+    }
+    verifyC(){
+        let band = false;
+        for(let i=1;i<=4;i++){
+            let mt = [[i,i,i],[i,0,0],[i,i,i]];
+            band = this.compareSimple(mt);
+            if(band)
+                return band;
+        }
+    }
+    verifyK(){
+        let band = false;
+        for(let i=1;i<=4;i++){
+            let mt = [[i,0,i],[i,i,0],[i,0,i]];
+            band = this.compareSimple(mt);
+            if(band)
+                return band;
+        }
+    }
+    verifyU(){
+        let band = false;
+        for(let i=1;i<=4;i++){
+            let mt = [[i,0,i],[i,0,i],[i,i,i]];
+            band = this.compareSimple(mt);
+            if(band)
+                return band;
+        }
+    }
+    verifyN(){
+        let band = false;
+        for(let i=1;i<=4;i++){
+            let mt = [[i,0,i],[i,i,i],[i,0,i]];
+            band = this.compareSimple(mt);
+            if(band)
+                return band;
+        }
+    }
+    compareSimple(mt){
+        for (var i = 0; i < 3; i++) {
+            for (var j = 0; j < 3; j++) {
+                if (mt[i][j] != 0) {
+                    if (mt[i][j] != this.matrix[i][j]) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
 }
 export default Board;
