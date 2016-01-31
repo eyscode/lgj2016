@@ -152,8 +152,8 @@ class God extends Phaser.Sprite {
         this.activateSkillKey2 = skills[Math.floor(Math.random() * skills.length)];
         this.activeSkill1 = this.skills[this.activateSkillKey1];
         this.activeSkill2 = this.skills[this.activateSkillKey2];
-        this.activeSkill1.addToGame(this.game, x1, 570);
-        this.activeSkill2.addToGame(this.game, x2, 570);
+        this.activeSkill1.addToGame(this.game, x1, 500);
+        this.activeSkill2.addToGame(this.game, x2, 500);
     }
 
 }

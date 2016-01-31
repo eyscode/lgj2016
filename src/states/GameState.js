@@ -22,7 +22,7 @@ class GameState extends Phaser.State {
         this.game.load.atlasXML('romper_h', 'assets/sprites/romper_h.png', 'assets/sprites/romper_h.xml');
         this.game.load.atlasXML('postura_h', 'assets/sprites/postura_h.png', 'assets/sprites/postura_h.xml');
         this.game.load.spritesheet('simbols', 'assets/menu/simbols.png', 252 / 4, 63, 8);
-        this.game.load.spritesheet('skills', 'assets/sprites/skills.png', 768 / 6, 512 / 4, 24);
+        this.game.load.spritesheet('skills', 'assets/sprites/skills.png', 80, 80, 24);
         this.game.load.image('interfase', 'assets/menu/interfase.jpg');
         this.game.load.image('godFlare', 'assets/particles/blue.png');
         this.game.load.image('lifeFlare', 'assets/particles/yellow.png');

@@ -16,12 +16,12 @@ class Player {
         if (this.type == 1) {
             this.direction = -1;
             this.positionGod = [200, 120];
-            this.positionSkills = [100, 300];
+            this.positionSkills = [10, 240];
             this.positionBoard = [110, 289];
             this.positionFlare = [200, 180];
         } else {
             this.positionGod = [600, 120];
-            this.positionSkills = [500, 700];
+            this.positionSkills = [410, 640];
             this.positionBoard = [506, 289];
             this.positionFlare = [620, 180];
             lifeX = 405;
