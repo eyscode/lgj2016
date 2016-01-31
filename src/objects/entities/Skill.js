@@ -1,11 +1,12 @@
 export default class Skill {
-    constructor(name, frame, matrix, type, obj, game) {
+    constructor(name, frame, matrix, type, obj, game, duration) {
         this.name = name;
         this.frame = frame;
         this.matrix = matrix;
         this.type = type;
         this.obj = obj;
         this.game = game;
+        this.duration = duration || 2;
     }
 
     setOwner(owner) {

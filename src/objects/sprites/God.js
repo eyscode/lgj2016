@@ -107,7 +107,7 @@ class God extends Phaser.Sprite {
             this.lastEvent = null;
         }
         this.animate(this.activateSkillKey1);
-        this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * 2, this.restore, this);
+        this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * this.activeSkill1.duration, this.restore, this);
         this.activeSkill1.performAction(enemy);
     }
 
@@ -117,7 +117,7 @@ class God extends Phaser.Sprite {
             this.lastEvent = null;
         }
         this.animate(this.activateSkillKey2);
-        this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * 2, this.restore, this);
+        this.lastEvent = this.game.time.events.add(Phaser.Timer.SECOND * this.activeSkill2.duration, this.restore, this);
         this.activeSkill2.performAction(enemy);
     }
 
@@ -152,8 +152,8 @@ class God extends Phaser.Sprite {
         this.activateSkillKey2 = skills[Math.floor(Math.random() * skills.length)];
         this.activeSkill1 = this.skills[this.activateSkillKey1];
         this.activeSkill2 = this.skills[this.activateSkillKey2];
-        this.activeSkill1.addToGame(this.game, x1, 500);
-        this.activeSkill2.addToGame(this.game, x2, 500);
+        this.activeSkill1.addToGame(this.game, x1, 505);
+        this.activeSkill2.addToGame(this.game, x2, 505);
     }
 
 }
