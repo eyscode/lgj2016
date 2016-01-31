@@ -20,7 +20,7 @@ class Player {
             this.positionBoard = [110, 289];
             this.positionFlare = [200, 180];
         } else {
-            this.positionGod = [650, 120];
+            this.positionGod = [600, 120];
             this.positionSkills = [500, 700];
             this.positionBoard = [506, 289];
             this.positionFlare = [620, 180];
