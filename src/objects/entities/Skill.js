@@ -1,10 +1,11 @@
 export default class Skill {
-    constructor(name, frame, matrix, type, obj) {
+    constructor(name, frame, matrix, type, obj, game) {
         this.name = name;
         this.frame = frame;
         this.matrix = matrix;
         this.type = type;
         this.obj = obj;
+        this.game = game;
     }
 
     setOwner(owner) {
@@ -16,10 +17,20 @@ export default class Skill {
         this.sprite.anchor.x = 0.5;
         this.sprite.anchor.y = 0.5;
         this.sprite.frame = this.frame;
+        this.sprite.scale.x = 2;
+        this.sprite.scale.y = 2;
+        this.sprite.alpha = 0;
+        this.game.add.tween(this.sprite).to({alpha: 1}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        this.game.add.tween(this.sprite.scale).to({x: 1, y: 1}, 3000, Phaser.Easing.Quadratic.InOut, true);
     }
 
     removeFromGame() {
-        this.sprite.destroy();
+        let last = this.sprite;
+        this.game.add.tween(this.sprite).to({alpha: 0}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        let tween = this.game.add.tween(this.sprite.scale).to({x: 2, y: 2}, 3000, Phaser.Easing.Quadratic.InOut, true);
+        tween.onComplete.add(function () {
+            last.destroy();
+        }, this);
     }
 
     performAction(enemy) {
