@@ -17,12 +17,12 @@ class Player {
             this.direction = -1;
             this.positionGod = [200, 120];
             this.positionSkills = [10, 240];
-            this.positionBoard = [110, 289];
+            this.positionBoard = [108, 290];
             this.positionFlare = [200, 180];
         } else {
             this.positionGod = [600, 120];
             this.positionSkills = [410, 640];
-            this.positionBoard = [506, 289];
+            this.positionBoard = [503, 290];
             this.positionFlare = [620, 180];
             lifeX = 405;
         }
@@ -55,12 +55,13 @@ class Player {
 
 
     destroyall() {
+        let th = this.enemy.typeGod;
         this.destroy();
         this.enemy.destroy();
         let t = 1;
         if (this.type == 1)
             t = 2;
-        this.game.state.start("WinnerState", true, true, t);
+        this.game.state.start("WinnerState", true, true, t,th);
     }
 
     attack1() {
